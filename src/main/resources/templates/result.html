@@ -1,0 +1,12 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Result of sentiment analyse</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<h1>Result</h1>
+<p th:text="'Sentiment analyse result is: ' + ${sentimentModel.result}"/>
+<a href="/input">Submit another message</a>
+</body>
+</html>
