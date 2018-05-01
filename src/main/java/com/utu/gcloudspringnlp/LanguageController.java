@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 @AllArgsConstructor
 public class LanguageController {
 
+    LanguageService languageService;
+
     @GetMapping("/input")
     public String inputForm(Model model) {
         model.addAttribute("sentimentModel", new SentimentModel());
@@ -21,8 +23,8 @@ public class LanguageController {
     }
 
     @PostMapping("/submit")
-    public String inputSubmit(@ModelAttribute SentimentModel model) {
-        model.setResult(model.getText());
+    public String inputSubmit(@ModelAttribute SentimentModel model) throws Exception {
+        model.setResult(languageService.run(model.getText()));
         log.info("Showing result.html");
         return "result";
     }
